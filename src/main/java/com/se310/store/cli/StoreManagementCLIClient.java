@@ -44,10 +44,10 @@ public class StoreManagementCLIClient {
     private static AuthenticationService authenticationService;
 
     public static void main(String[] args) {
-        System.out.println("╔═══════════════════════════════════════════════╗");
-        System.out.println("║   Smart Store Management CLI Client           ║");
-        System.out.println("║   (Hybrid: API + Direct Service Access)       ║");
-        System.out.println("╚═══════════════════════════════════════════════╝");
+        System.out.println("===============================================");
+        System.out.println("|  Smart Store Management CLI Client        |");
+        System.out.println("|  (Hybrid: API + Direct Service Access)    |");
+        System.out.println("===============================================");
         System.out.println();
 
         // Initialize local services
@@ -109,7 +109,7 @@ public class StoreManagementCLIClient {
             storeService = new StoreService();
             authenticationService = new AuthenticationService(userRepository);
 
-            System.out.println("✓ Local services initialized");
+            System.out.println("[OK] Local services initialized");
             System.out.println();
         } catch (Exception e) {
             System.err.println("Error initializing services: " + e.getMessage());
@@ -137,32 +137,32 @@ public class StoreManagementCLIClient {
 
             if (userOpt.isPresent()) {
                 User user = userOpt.get();
-                System.out.println("✓ Authentication successful!");
+                System.out.println("[OK] Authentication successful!");
                 System.out.println("  Welcome, " + user.getName() + " (" + user.getRole() + ")");
                 System.out.println();
                 return true;
             } else {
-                System.out.println("✗ Authentication failed: Invalid credentials");
+                System.out.println("[X] Authentication failed: Invalid credentials");
                 return false;
             }
         } catch (Exception e) {
-            System.out.println("✗ Authentication failed: " + e.getMessage());
+            System.out.println("[X] Authentication failed: " + e.getMessage());
             return false;
         }
     }
 
     private static void printMainMenu() {
-        System.out.println("\n╔═══════════════════════════════════════════════╗");
-        System.out.println("║              MAIN MENU                        ║");
-        System.out.println("╠═══════════════════════════════════════════════╣");
-        System.out.println("║  1. Manage Stores (via API)                   ║");
-        System.out.println("║  2. Manage Users (via API)                    ║");
-        System.out.println("║  3. Manage Products (via Service)             ║");
-        System.out.println("║  4. Manage Customers (via Service)            ║");
-        System.out.println("║  5. View API Documentation                    ║");
-        System.out.println("║  6. Logout (Switch User)                      ║");
-        System.out.println("║  0. Exit                                      ║");
-        System.out.println("╚═══════════════════════════════════════════════╝");
+        System.out.println("\n===============================================");
+        System.out.println("|            MAIN MENU                      |");
+        System.out.println("===============================================");
+        System.out.println("|  1. Manage Stores (via API)               |");
+        System.out.println("|  2. Manage Users (via API)                |");
+        System.out.println("|  3. Manage Products (via Service)         |");
+        System.out.println("|  4. Manage Customers (via Service)        |");
+        System.out.println("|  5. View API Documentation                |");
+        System.out.println("|  6. Logout (Switch User)                  |");
+        System.out.println("|  0. Exit                                  |");
+        System.out.println("===============================================");
         System.out.print("Enter your choice: ");
     }
 
@@ -247,7 +247,7 @@ public class StoreManagementCLIClient {
         // Clear authentication
         authHeader = null;
 
-        System.out.println("✓ Logged out successfully\n");
+        System.out.println("[OK] Logged out successfully\n");
 
         // Re-authenticate with new credentials
         while (!authenticate()) {
